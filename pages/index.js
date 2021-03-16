@@ -1,6 +1,6 @@
 const IndexPage = () => (
     <div>
-        Hello world!
+        Nothing to see here!
     </div>
 )
 
