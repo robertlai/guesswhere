@@ -24,3 +24,16 @@ a {
 h2 {
     margin: 0 0 8px;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, tr, td {
+    border: 2px solid #cccccc;
+}
+
+td {
+    padding: 12px;
+}

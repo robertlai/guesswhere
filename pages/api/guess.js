@@ -16,7 +16,7 @@ export default async (req, res) => {
         });
 
     const guesses = submissions.map((sub, i) => ({
-        team: xd.insertedId,
+        teamNum: req.body.team_num,
         fileName: sub.fileName,
         coords: req.body[`coords_${i}`],
         name: req.body[`name_${i}`],

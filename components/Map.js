@@ -6,7 +6,7 @@ const center = {
     lng: -0.09,
 };
 
-const Map = ({onPositionChanged}) => {
+const Map = ({onPositionChanged, draggable=true, markers=null, location=null }) => {
     const [mounted, setMounted] = useState(false);
     const [position, setPosition] = useState(center);
 
@@ -27,7 +27,32 @@ const Map = ({onPositionChanged}) => {
 
     if (!mounted) return null;
 
-    const { MapContainer, TileLayer, Marker, Popup } = require('react-leaflet');
+    const { MapContainer, TileLayer, Marker, Popup, Circle, Tooltip } = require('react-leaflet');
+
+    let theMarkers = [
+        <Marker
+            draggable={draggable}
+            eventHandlers={eventHandlers}
+            position={position}
+            ref={markerRef}
+        />
+    ];
+    if (markers != null) {
+        theMarkers = markers.map(guess => (
+            <Circle center={JSON.parse(guess.coords)} pathOptions={{ fillColor: 'blue' }} radius={1}>
+                <Tooltip direction="top" opacity={1} permanent>
+                    {guess.teamNum}
+                </Tooltip>
+            </Circle>
+        ))
+        theMarkers.push(
+            <Circle center={JSON.parse(location)} pathOptions={{ fillColor: 'blue' }} radius={1}>
+                <Tooltip direction="top" opacity={1} permanent>
+                    ✰
+                </Tooltip>
+            </Circle>
+        )
+    }
 
     return (
         <>
@@ -44,12 +69,7 @@ const Map = ({onPositionChanged}) => {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker
-                    draggable={true}
-                    eventHandlers={eventHandlers}
-                    position={position}
-                    ref={markerRef}
-                />
+                {theMarkers}
             </MapContainer>
         </>
     );
