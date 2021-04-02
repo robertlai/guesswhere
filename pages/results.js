@@ -6,7 +6,10 @@ const ResultsPage = ({ submissions, guesses }) => {
   return (
     <div className={styles.container}>
         {submissions.map((submission, i) => (
-            <Result submission={submission} guesses={guesses[i]} />
+            <div key={submission.fileName}>
+                <h2>Photo {i + 1}</h2>
+                <Result submission={submission} guesses={guesses[i]} />
+            </div>
         ))}
     </div>
   );
