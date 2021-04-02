@@ -8,7 +8,7 @@ const center = {
     lng: -0.09,
 };
 
-const GuessThing = ({ fileName, index }) => {
+const GuessThing = ({ fileName, index, names }) => {
     const [location, setLocation] = useState(center);
 
     return (
@@ -30,7 +30,14 @@ const GuessThing = ({ fileName, index }) => {
             <br />
             <br />
             <label htmlFor={`name_${index}`}>Whose photo is this? (Photo {index + 1}) </label>
-            <input name={`name_${index}`} id={`name_${index}`} />
+            <select name={`name_${index}`} id={`name_${index}`}>
+                <option value={""}>Select an option</option>
+                {names.map(name => (
+                    <option value={name} key={name}>
+                        {name}
+                    </option>
+                ))}
+            </select>
         </div>
     )
 };

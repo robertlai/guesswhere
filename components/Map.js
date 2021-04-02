@@ -39,19 +39,21 @@ const Map = ({onPositionChanged, draggable=true, markers=null, location=null }) 
     ];
     if (markers != null) {
         theMarkers = markers.map(guess => (
-            <Circle center={JSON.parse(guess.coords)} pathOptions={{ fillColor: 'blue' }} radius={1}>
+            <Circle key={JSON.stringify(guess)} center={JSON.parse(guess.coords)} pathOptions={{ fillColor: 'blue' }} radius={1}>
                 <Tooltip direction="top" opacity={1} permanent>
                     {guess.teamNum}
                 </Tooltip>
             </Circle>
         ))
-        theMarkers.push(
-            <Circle center={JSON.parse(location)} pathOptions={{ fillColor: 'blue' }} radius={1}>
-                <Tooltip direction="top" opacity={1} permanent>
-                    ✰
-                </Tooltip>
-            </Circle>
-        )
+        if (location != null) {
+            theMarkers.push(
+                <Circle center={JSON.parse(location)} pathOptions={{ fillColor: 'blue' }} radius={1}>
+                    <Tooltip direction="top" opacity={1} permanent>
+                        <div style={{color: 'gold', fontSize: 20}}>★</div>
+                    </Tooltip>
+                </Circle>
+            )
+        }
     }
 
     return (

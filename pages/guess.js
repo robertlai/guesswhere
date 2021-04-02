@@ -3,7 +3,7 @@ import { connectToDatabase } from 'util/mongodb'
 import GuessThing from 'components/GuessThing';
 import styles from 'styles/SubmitPage.module.scss';
 
-const GuessPage = ({ submissions }) => {
+const GuessPage = ({ submissions, names }) => {
     return (
         <div className={styles.container}>
             <form action="/api/guess" method="post">
@@ -18,7 +18,7 @@ const GuessPage = ({ submissions }) => {
                 <input type="number" name="team_num" id="team_num" />
                 <br /><br />
                 {submissions.map((sub, i) => (
-                    <GuessThing key={sub.fileName} fileName={sub.fileName} index={i} />
+                    <GuessThing key={sub.fileName} fileName={sub.fileName} index={i} names={names} />
                 ))}
                 <input type="submit" value="Submit guesses" />
             </form>
@@ -35,11 +35,19 @@ export const getServerSideProps = async context => {
         .sort({ fileName: 1 })
         .toArray();
 
+    const names = submissions.reduce((acc, cur) => {
+        if (!acc.includes(cur.name)) {
+            acc.push(cur.name);
+        }
+        return acc;
+    }, []);
+
     return {
         props: {
             submissions: submissions.map(({ fileName }) => ({
                 fileName,
             })),
+            names,
         },
     };
 };
