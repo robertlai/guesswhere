@@ -9,13 +9,30 @@ const GuessThing = ({ fileName, index, names }) => {
   const [location, setLocation] = useState(DEFAULT_CENTER);
 
   return (
-    <div className={styles.container}>
+    <>
       <h2>Photo {index + 1}</h2>
       <img className={styles.photo} src={`uploads/${fileName}`} />
-      <br />
-      <Map onPositionChanged={(e) => setLocation(e)} />
+      <div>
+        <label htmlFor={`name_${index}`}>
+          Whose photo is this? (Photo {index + 1}){" "}
+        </label>
+        <select name={`name_${index}`} id={`name_${index}`}>
+          <option value={""}>Select an option</option>
+          {names.map((name) => (
+            <option value={name} key={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label htmlFor={`name_${index}`}>
+          Where was it taken? (Photo {index + 1}){" "}
+        </label>
+        <Map onPositionChanged={(e) => setLocation(e)} />
+      </div>
       <input
-        className={styles.coords}
+        style={{ display: "none" }}
         readOnly
         name={`coords_${index}`}
         id={`coords_${index}`}
@@ -24,20 +41,7 @@ const GuessThing = ({ fileName, index, names }) => {
           lng: location.lng,
         })}
       />
-      <br />
-      <br />
-      <label htmlFor={`name_${index}`}>
-        Whose photo is this? (Photo {index + 1}){" "}
-      </label>
-      <select name={`name_${index}`} id={`name_${index}`}>
-        <option value={""}>Select an option</option>
-        {names.map((name) => (
-          <option value={name} key={name}>
-            {name}
-          </option>
-        ))}
-      </select>
-    </div>
+    </>
   );
 };
 

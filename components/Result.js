@@ -31,16 +31,14 @@ const Result = ({ submission, guesses }) => {
     .sort((a, b) => a.distance - b.distance);
 
   return (
-    <div className={styles.container}>
+    <>
       <img className={styles.photo} src={`uploads/${submission.fileName}`} />
-      <br />
       <Map
         onPositionChanged={() => {}}
         draggable={false}
         location={revealed ? submission.coords : null}
         markers={guesses}
       />
-      <br />
       <table>
         <thead>
           <tr>
@@ -67,31 +65,9 @@ const Result = ({ submission, guesses }) => {
             );
           })}
         </tbody>
-        {/* <tr>
-          {guesses.map(({ teamNum }) => (
-            <td key={teamNum}>Team {teamNum}</td>
-          ))}
-        </tr>
-        <tr>
-          {guesses.map(({ name, teamNum }) => (
-            <td key={teamNum}>{name}</td>
-          ))}
-        </tr>
-        <tr>
-          <td>0 miles</td>
-          {distances.map((distance) => (
-            <td
-              key={distance}
-              style={{ fontWeight: minDist == distance ? "bold" : null }}
-            >
-              {revealed && `${distance.toFixed(2)} miles`}
-            </td>
-          ))}
-        </tr> */}
       </table>
-      <br />
-      <button onClick={() => setRevealed(true)}>Reveal</button>
-    </div>
+      {!revealed && <button onClick={() => setRevealed(true)}>Reveal</button>}
+    </>
   );
 };
 

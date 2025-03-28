@@ -1,6 +1,6 @@
-import { connectToDatabase } from "util/mongodb";
-import Result from "components/Result";
-import styles from "styles/SubmitPage.module.scss";
+import Result from "@/components/Result";
+import styles from "@/styles/page.module.scss";
+import { connectToDatabase } from "@/util/mongodb";
 
 const ResultsPage = async () => {
   const { db } = await connectToDatabase();
@@ -35,10 +35,10 @@ const ResultsPage = async () => {
   return (
     <div className={styles.container}>
       {submissions.map((submission, i) => (
-        <div key={submission.fileName}>
+        <section key={submission.fileName}>
           <h2>Photo {i + 1}</h2>
           <Result submission={submission} guesses={guesses[i]} />
-        </div>
+        </section>
       ))}
     </div>
   );

@@ -1,10 +1,11 @@
-import path from "path";
-import { writeFile } from "fs/promises";
 import crypto from "crypto";
-import { connectToDatabase } from "util/mongodb";
-import { DEFAULT_CENTER } from "util/constants";
+import { writeFile } from "fs/promises";
+import path from "path";
 
-export const POST = async (req, res) => {
+import { DEFAULT_CENTER } from "@/util/constants";
+import { connectToDatabase } from "@/util/mongodb";
+
+export async function POST(req) {
   const formData = await req.formData();
 
   const name = formData.get("name");
@@ -48,7 +49,7 @@ export const POST = async (req, res) => {
     );
 
     const { db } = await connectToDatabase();
-    const result = await db.collection("submissions").insertMany([
+    await db.collection("submissions").insertMany([
       {
         fileName: filename1,
         name: name,
@@ -68,4 +69,4 @@ export const POST = async (req, res) => {
   }
 
   return new Response("Submission received. Thanks!", { status: 200 });
-};
+}

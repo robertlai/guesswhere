@@ -1,7 +1,6 @@
-import { connectToDatabase } from "util/mongodb";
-
-import GuessThing from "components/GuessThing";
-import styles from "styles/SubmitPage.module.scss";
+import GuessThing from "@/components/GuessThing";
+import styles from "@/styles/page.module.scss";
+import { connectToDatabase } from "@/util/mongodb";
 
 const GuessPage = async () => {
   const { db } = await connectToDatabase();
@@ -22,26 +21,30 @@ const GuessPage = async () => {
   return (
     <div className={styles.container}>
       <form action="/api/guess" method="post">
-        <h2>Instructions</h2>
-        <p>
-          For each photo, drag the marker to the location where you think the
-          photo was taken and enter the name of the team member that you think
-          the photo was submitted by.
-        </p>
-        <br />
-        <h2>Guesser</h2>
-        <input type="text" name="team_num" id="team_num" />
-        <br />
-        <br />
+        <section>
+          <div>
+            <h2>Instructions</h2>
+            <p>
+              For each photo, drag the marker to the location where you think
+              the photo was taken and enter the name of the team member that you
+              think the photo was submitted by.
+            </p>
+          </div>
+        </section>
+        <section>
+          <div>
+            <h2>Your name</h2>
+            <input type="text" name="team_num" id="team_num" />
+          </div>
+        </section>
         {submissions.map((sub, i) => (
-          <GuessThing
-            key={sub.fileName}
-            fileName={sub.fileName}
-            index={i}
-            names={names}
-          />
+          <section key={sub.fileName}>
+            <GuessThing fileName={sub.fileName} index={i} names={names} />
+          </section>
         ))}
-        <input type="submit" value="Submit guesses" />
+        <section>
+          <input type="submit" value="Submit guesses" />
+        </section>
       </form>
     </div>
   );

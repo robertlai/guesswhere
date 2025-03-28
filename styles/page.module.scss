@@ -1,0 +1,19 @@
+.container {
+  max-width: 800px;
+  margin: 24px auto;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding: 36px;
+    background-color: #fefefe;
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.coords {
+  width: 100%;
+}

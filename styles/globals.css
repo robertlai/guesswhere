@@ -8,8 +8,8 @@ p {
 }
 
 body {
-    height: 100%;
-    background-color: #ccffcc;
+    background-color: #efefef;
+    color: #333;
 }
 
 a {
@@ -36,4 +36,54 @@ table, tr, td, th {
 
 td {
     padding: 12px;
+}
+
+button, input {
+    width: 100%;
+    font-size: 20px;
+    padding: 8px;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &:focus {
+        outline: none;
+        border: 2px solid #3cf;
+    }
+}
+
+button, input[type="submit"] {
+    border: none;
+    background-color: #3af;
+    color: #fefefe;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+
+    &:hover {
+        background-color: #3cf;
+    }
+}
+
+select {
+    width: 100%;
+    font-size: 20px;
+    padding: 8px;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+    &:focus {
+        outline: none;
+        border: 2px solid #3cf;
+    }
+}
+
+label {
+    display: block;
+    margin: 8px;
 }
