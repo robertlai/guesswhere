@@ -2,7 +2,7 @@ import GuessThing from "@/components/GuessThing";
 import styles from "@/styles/page.module.scss";
 import { connectToDatabase } from "@/util/mongodb";
 
-const GuessPage = async () => {
+export default async function GuessPage() {
   const { db } = await connectToDatabase();
 
   const submissions = await db
@@ -48,6 +48,6 @@ const GuessPage = async () => {
       </form>
     </div>
   );
-};
+}
 
-export default GuessPage;
+export const dynamic = "force-dynamic";

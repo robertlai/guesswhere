@@ -2,7 +2,7 @@ import Result from "@/components/Result";
 import styles from "@/styles/page.module.scss";
 import { connectToDatabase } from "@/util/mongodb";
 
-const ResultsPage = async () => {
+export default async function ResultsPage() {
   const { db } = await connectToDatabase();
 
   const submissions = await db
@@ -42,6 +42,6 @@ const ResultsPage = async () => {
       ))}
     </div>
   );
-};
+}
 
-export default ResultsPage;
+export const dynamic = "force-dynamic";
