@@ -11,7 +11,7 @@ const GuessThing = ({ fileName, index, names }) => {
   return (
     <>
       <h2>Photo {index + 1}</h2>
-      <img className={styles.photo} src={`uploads/${fileName}`} />
+      <img className={styles.photo} src={`api/file/${fileName}`} />
       <div>
         <label htmlFor={`name_${index}`}>
           Whose photo is this? (Photo {index + 1}){" "}

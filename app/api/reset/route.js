@@ -9,7 +9,7 @@ export async function POST(req) {
   await db.collection("teams").deleteMany({});
 
   // Clear the uploads folder
-  const uploadsDir = path.join(process.cwd(), "public/uploads");
+  const uploadsDir = path.join(process.cwd(), "uploads");
   const files = await readdir(uploadsDir);
   await Promise.all(files.map((file) => unlink(path.join(uploadsDir, file))));
 

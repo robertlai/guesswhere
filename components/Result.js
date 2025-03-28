@@ -33,7 +33,7 @@ const Result = ({ submission, guesses }) => {
 
   return (
     <>
-      <img className={styles.photo} src={`uploads/${submission.fileName}`} />
+      <img className={styles.photo} src={`api/file/${submission.fileName}`} />
       <Map
         onPositionChanged={() => {}}
         draggable={false}

@@ -39,14 +39,8 @@ export async function POST(req) {
   const filename2 = hash2 + "." + extension2;
 
   try {
-    await writeFile(
-      path.join(process.cwd(), "public/uploads/" + filename1),
-      buffer1
-    );
-    await writeFile(
-      path.join(process.cwd(), "public/uploads/" + filename2),
-      buffer2
-    );
+    await writeFile(path.join(process.cwd(), "uploads/" + filename1), buffer1);
+    await writeFile(path.join(process.cwd(), "uploads/" + filename2), buffer2);
 
     const { db } = await connectToDatabase();
     await db.collection("submissions").insertMany([

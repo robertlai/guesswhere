@@ -869,6 +869,7 @@ __metadata:
   resolution: "guesswhere@workspace:."
   dependencies:
     leaflet: 1.9.4
+    mime: ^4.0.6
     mongodb: 6.15.0
     multer: 1.4.5-lts.2
     next: 15.2.4
@@ -1095,6 +1096,15 @@ __metadata:
   dependencies:
     mime-db: 1.45.0
   checksum: ea59cb885b5234cd7fcc2c8de1eff8543cf057be7daaf804a1b9b2cc6930c8dbcdc5e86b9732827a794d5282baa6f45ef93bc50eaba93839b9174cc6d36c9702
+  languageName: node
+  linkType: hard
+
+"mime@npm:^4.0.6":
+  version: 4.0.6
+  resolution: "mime@npm:4.0.6"
+  bin:
+    mime: bin/cli.js
+  checksum: b18389c63c5120fbae32b82bc33a0d2ae26443bff25c63c88a7283cdc09e610909403faafd91e461b9fd20650642e37a612fe7982131a909ab1219aaaff2c0a0
   languageName: node
   linkType: hard
 
