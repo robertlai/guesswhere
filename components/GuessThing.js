@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 
-import Map from "components/Map";
-import styles from "styles/GuessThing.module.scss";
-import { DEFAULT_CENTER } from "util/constants";
+import Map from "@/components/Map";
+import styles from "@/styles/GuessThing.module.scss";
+import { DEFAULT_CENTER } from "@/util/constants";
 
 const GuessThing = ({ fileName, index, names }) => {
   const [location, setLocation] = useState(DEFAULT_CENTER);

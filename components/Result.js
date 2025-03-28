@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
-import styles from "styles/GuessThing.module.scss";
-import Map from "components/Map";
+import Map from "@/components/Map";
+import styles from "@/styles/GuessThing.module.scss";
 
 function distance(p1j, p2j) {
   const p1 = JSON.parse(p1j);
   const p2 = JSON.parse(p2j);
+  if (!p1 || !p2) return Infinity;
   const p = 0.017453292519943295;
   const c = Math.cos;
   const a =

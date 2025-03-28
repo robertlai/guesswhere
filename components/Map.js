@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import "leaflet/dist/leaflet.css";
-import { DEFAULT_CENTER } from "util/constants";
+import { DEFAULT_CENTER } from "@/util/constants";
 
 const Map = ({
   onPositionChanged,
